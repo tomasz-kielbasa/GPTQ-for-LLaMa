@@ -72,17 +72,17 @@ def load_quant(model, checkpoint, wbits, groupsize=-1, fused_mlp=True, eval=True
     return model
 
 
-def tokenizer_and_model(model, wbits=4, groupsize=128, load=None):
+def tokenizer_and_model(model_path, wbits=4, groupsize=128, load=None):
 
     if type(load) is not str:
         load = load.as_posix()
 
     if load:
-        model = load_quant(model, load, wbits, groupsize)
+        model = load_quant(model_path, load, wbits, groupsize)
     else:
-        model = get_llama(model)
+        model = get_llama(model_path)
         model.eval()
 
     model.to(DEV)
-    tokenizer = AutoTokenizer.from_pretrained(model, use_fast=False)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
     return tokenizer, model
