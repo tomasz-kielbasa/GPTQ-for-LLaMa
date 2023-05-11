@@ -21,5 +21,3 @@ def scrape_url(url):
     for paragraph in paragraphs:
         paragraphs_.append(paragraph.text)
     return paragraphs_
-
-print(paragraphs_from_search('How old is Jacek Kalita?'))
