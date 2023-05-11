@@ -21,6 +21,3 @@ def scrape_url(url):
     for paragraph in paragraphs:
         paragraphs_.append(paragraph.text.strip())
     return paragraphs_
-
-
-print(paragraphs_from_search("Who won the last Wimbledon?"))
